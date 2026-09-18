@@ -162,17 +162,4 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-import sys
 
-# این کد را در انتهای settings.py قرار بده
-if 'runserver' in sys.argv or 'gunicorn' in sys.argv:
-    from django.core.management import call_command
-    from django.contrib.auth import get_user_model
-    try:
-        # صبر می‌کنیم تا جنگو لود شود
-        User = get_user_model()
-        if not User.objects.filter(username='admin299').exists():
-            call_command('createsuperuser', username='admin299', email='admin@example.com', password='3131', interactive=False)
-            print("✅ Superuser created successfully!")
-    except Exception as e:
-        print(f"❌ Error: {e}")
