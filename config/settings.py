@@ -36,12 +36,8 @@ CSRF_TRUSTED_ORIGINS = [
     'http://127.0.0.1'
 ]
 
-ALLOWED_HOSTS = [
-    # 'defshop.ir',
-    # 'www.defshop.ir',
-    '127.0.0.1',
-    'localhost',
-]
+ALLOWED_HOSTS = ['*']
+
 
 SECURE_SSL_REDIRECT = False
 SESSION_COOKIE_SECURE = True
