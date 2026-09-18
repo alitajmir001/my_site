@@ -10,5 +10,7 @@ selenium==4.49.0
 toml==0.10.2
 tornado==6.5.10
 zipp==3.23.0
+django-ckeditor
 gunicorn
 whitenoise
+
