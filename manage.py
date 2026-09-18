@@ -16,6 +16,21 @@ def main():
             "forget to activate a virtual environment?"
         ) from exc
     execute_from_command_line(sys.argv)
+    import os
+    from django.contrib.auth import get_user_model
+    from django.db import connection
+
+    # بررسی می‌کنیم اگر کاربر وجود ندارد، بسازیمش
+    try:
+        User = get_user_model()
+        if not User.objects.filter(username='admin299').exists():
+            # این دستور را با دقت کپی کن
+            from django.core.management import call_command
+            call_command('createsuperuser', username='admin299', email='admin@example.com', password='--password --password', interactive=False)
+            print("✅ Superuser created automatically!")
+    except Exception as e:
+        # اگر هنوز اپ‌ها لود نشده باشند، این خطا را نادیده بگیر و اجازه بده سرور بالا بیاید
+        print(f"ℹ️ Info: {e}")
 
 
 if __name__ == '__main__':
