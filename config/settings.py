@@ -165,7 +165,7 @@ from django.core.management import call_command
 
 try:
     User = get_user_model()
-    if not User.objects.filter(username='admin').exists():
+    if not User.objects.filter(username='admin299').exists():
         User.objects.create_superuser('admin299', 'admin@example.com', '3131')
         print("✅ Superuser 'admin' created successfully!")
 except Exception as e:
