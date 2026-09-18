@@ -160,13 +160,6 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-from django.contrib.auth import get_user_model
-from django.core.management import call_command
 
-try:
-    User = get_user_model()
-    if not User.objects.filter(username='admin299').exists():
-        User.objects.create_superuser('admin299', 'admin@example.com', '3131')
-        print("✅ Superuser 'admin' created successfully!")
-except Exception as e:
-    print(f"❌ Error creating superuser: {e}")
+
+
