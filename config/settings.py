@@ -110,7 +110,9 @@ DATABASES = {
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.sqlite3',   # استفاده از SQLite
-#         'NAME': BASE_DIR / 'db.sqlite3',  # محل ذخیره سازی فایل دیتابیس SQLite
+#         'NAME': BASE_DIR / 'db.sqlite3',# محل ذخیره سازی فایل دیتابیس SQLite
+          'USER': 'admin299',
+          'PASSWORD': '3131',
 #     }
 # }
 # Password validation
