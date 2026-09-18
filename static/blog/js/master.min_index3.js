@@ -1,0 +1,1 @@
+(function(r){"use strict";if(r(".dkmag-faq-q").on("click",function(){r(this).parent().find(".dkmag-faq-a").stop(!0,!1).slideToggle()}),r(".progress-pie-chart").length>0){var s=r(".progress-pie-chart"),t=parseInt(s.data("percent")),a=360*t/100;t>50&&s.addClass("gt-50"),r(".ppc-progress-fill").css("transform","rotate("+a+"deg)")}})(jQuery);

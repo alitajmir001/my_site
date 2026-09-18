@@ -1,0 +1,255 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block style %}
+<link rel="stylesheet" type="text/css" href="{%static 'plugins/themify-icons/themify-icons.css'%}" />
+<link rel="stylesheet" type="text/css" href="{%static 'plugins/jquery-ui-1.12.1.custom/jquery-ui.css'%}" />
+<link rel="stylesheet" type="text/css" href="{%static 'styles/single_styles.css'%}" />
+<link rel="stylesheet" type="text/css" href="{%static 'styles/single_responsive.css'%}" />
+{% endblock %}
+{% block script %}
+<script src="{%static 'plugins/jquery-ui-1.12.1.custom/jquery-ui.js'%}"></script>
+<script src="{%static 'js/single_custom.js'%}"></script>
+
+{% endblock %}
+
+{% block content%}
+
+<div class="row">
+	<div class="col-lg-7 col-sm-12 col-xs-12"  style="margin-top: 182px;">
+		<div class="single_product_pics">
+			<div class="row">
+				<div class="col-lg-3 col-sm-12 col-xs-12 thumbnails_col order-lg-1 order-2">
+					<div class="single_product_thumbnails">
+						<ul>
+							
+							{%for it in item.gallery.all%}
+							<li><img src="{{it.photo1.url}}" alt="{{item.alt}}" data-image="{{it.photo1.url}}"></li>
+							<li><img src="{{it.photo2.url}}" alt="{{item.alt}}" data-image="{{it.photo2.url}}"></li>
+							<li><img src="{{it.photo3.url}}" alt="{{item.alt}}" data-image="{{it.photo3.url}}"></li>
+							
+							
+							{%endfor%}
+						
+							
+						</ul>
+					</div>
+				</div>
+				<div class="col-lg-9 col-sm-12 col-xs-12 image_col order-lg-2 order-1" style="margin-left: auto !important;">
+					<div class="single_product_image">
+						<div class="single_product_image_background"  style="background-image:url('{{item.file.url}}');background-size:contain">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-lg-5 col-sm-12 col-xs-12"  style="margin-top: 200px;margin-right:auto ;">
+		<div class="product_details" style="overflow-y: hidden;overflow-x: auto;direction: ltr;scrollbar-width: thin;">
+			<div class="product_details_title" style="text-align: end;margin-right: 20px;">
+				<h2 >{{item.title}}</h2>
+				<p>{{item.descryption|linebreaks}}</p>
+			</div>
+			
+			
+			<div class="product_price"><h3 style="text-align: start;float: left;">قیمت:</h3>تومان<span style="margin-left: 20px;">{{item.price}}</span></div>
+			
+			<br>
+			<br>
+			<br>
+			<h3 style="text-align: start;">رضایت مشتریان:<a class="btn btn-warning ">%{{item.consent}}</a></h3>
+			<div style="text-align: center;">
+			<a href="{{item.linq}}" class="btn btn-success" style="text-align: start;">رفتن به سایت</a>
+		</div>
+			
+		</div>
+	</div>
+</div>
+
+</div>
+
+<!-- Tabs -->
+
+<div class="tabs_section_container">
+
+	<div class="container">
+		<div class="row">
+			<div class="col">
+				<div class="tabs_container">
+					<ul
+						class="tabs d-flex flex-sm-row flex-column align-items-left align-items-md-center justify-content-center">
+						<li class="tab active" data-active-tab="tab_1"><span>توضیحات</span></li>
+						<li class="tab" data-active-tab="tab_2"><span>مشخصات</span></li>
+						<li class="tab" data-active-tab="tab_3"><span>کامنت ها</span></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col">
+
+				<!-- Tab Description -->
+
+				<div id="tab_1" class="tab_container active">
+					<div class="row">
+						<div class="col-lg-5 desc_col">
+							<div class="tab_title">
+								<h4>توضیحات</h4>
+							</div>
+							<div class="tab_text_block">
+								<h2>{{item.title}}</h2>
+								<p>{{item.descryption|linebreaks}}</p>
+							</div>
+							<div class="tab_image">
+								<img src="{{item.file.url}}" alt="">
+							</div>
+							
+						</div>
+						<div class="col-lg-5 offset-lg-2 desc_col">
+							
+						</div>
+					</div>
+				</div>
+
+				<!-- Tab Additional Info -->
+
+				<div id="tab_2" class="tab_container">
+					<div class="row">
+						<div class="col additional_info_col">
+							<div class="tab_title additional_info_title">
+								<h4>ویژگی ها</h4>
+							</div>
+							<p>{{items1}}</p>
+							<ul>
+								{% for key,value in attributes.items %}
+								
+								
+								<h3>{{ key }}:</h3>
+								<ul>
+									{% for it in value %}
+									<li style="background-color: {{it.value}}">{{it.value}}</li>
+									{% endfor %}
+
+								</ul>
+
+
+							
+								{%endfor%}
+							</ul>
+
+
+
+
+
+
+
+						</div>
+					</div>
+				</div>
+
+				<!-- Tab Reviews -->
+
+				<div id="tab_3" class="tab_container">
+					<div class="row">
+
+						<!-- User Reviews -->
+
+						<div class="col-lg-6 reviews_col">
+							<div class="tab_title reviews_title">
+								<h4>کامنت ها</h4>
+							</div>
+
+							<!-- User Review -->
+
+							<div class="user_review_container d-flex flex-column flex-sm-row">
+								<div class="user">
+									<div class="user_pic"></div>
+									<div class="user_rating">
+										<ul class="star_rating">
+											<li><i class="fa fa-star" aria-hidden="true"></i></li>
+											<li><i class="fa fa-star" aria-hidden="true"></i></li>
+											<li><i class="fa fa-star" aria-hidden="true"></i></li>
+											<li><i class="fa fa-star" aria-hidden="true"></i></li>
+											<li><i class="fa fa-star-o" aria-hidden="true"></i></li>
+										</ul>
+									</div>
+								</div>
+								<div class="review">
+									<div class="review_date">27 Aug 2016</div>
+									<div class="user_name">بی نام</div>
+									<p>کامنت خالی</p>
+								</div>
+							</div>
+
+							<!-- User Review -->
+
+							<div class="user_review_container d-flex flex-column flex-sm-row">
+								<div class="user">
+									<div class="user_pic"></div>
+									<div class="user_rating">
+										<ul class="star_rating">
+											<li><i class="fa fa-star" aria-hidden="true"></i></li>
+											<li><i class="fa fa-star" aria-hidden="true"></i></li>
+											<li><i class="fa fa-star" aria-hidden="true"></i></li>
+											<li><i class="fa fa-star" aria-hidden="true"></i></li>
+											<li><i class="fa fa-star-o" aria-hidden="true"></i></li>
+										</ul>
+									</div>
+								</div>
+								<div class="review">
+									<div class="review_date">27 Aug 2016</div>
+									<div class="user_name">بی نام</div>
+									<p>کامنت خالی</p>
+								</div>
+							</div>
+						</div>
+
+						<!-- Add Review -->
+
+						<div class="col-lg-6 add_review_col">
+
+							<div class="add_review">
+								<form id="review_form" action="post">
+									<div>
+										<h1>Add Review</h1>
+										<input id="review_name" class="form_input input_name" type="text" name="name"
+											placeholder="Name*" required="required" data-error="Name is required.">
+										<input id="review_email" class="form_input input_email" type="email"
+											name="email" placeholder="Email*" required="required"
+											data-error="Valid email is required.">
+									</div>
+									<div>
+										<h1>Your Rating:</h1>
+										<ul class="user_star_rating">
+											<li><i class="fa fa-star" aria-hidden="true"></i></li>
+											<li><i class="fa fa-star" aria-hidden="true"></i></li>
+											<li><i class="fa fa-star" aria-hidden="true"></i></li>
+											<li><i class="fa fa-star" aria-hidden="true"></i></li>
+											<li><i class="fa fa-star-o" aria-hidden="true"></i></li>
+										</ul>
+										<textarea id="review_message" class="input_review" name="message"
+											placeholder="Your Review" rows="4" required
+											data-error="Please, leave us a review."></textarea>
+									</div>
+									<div class="text-left text-sm-right">
+										<button id="review_submit" type="submit"
+											class="red_button review_submit_btn trans_300"
+											value="Submit">submit</button>
+									</div>
+								</form>
+							</div>
+
+						</div>
+
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+
+
+
+{%endblock%}

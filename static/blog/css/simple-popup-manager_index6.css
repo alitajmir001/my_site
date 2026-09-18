@@ -1,0 +1,153 @@
+.simple-popup-manager .spm_bar {
+  transition: transform .5s !important;
+  transform: translateY(-100%);
+}
+
+.simple-popup-manager-visible .spm_bar {
+  transform: translateY(0%);
+}
+
+.spm_bar {
+  display: flex;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: auto;
+  left: 0;
+  z-index: 10;
+  text-align: left;
+  padding: 10px;
+  min-height: 40px;
+}
+
+.spm_bar.spm_bar-fixed {
+  position: fixed;
+}
+
+.spm_bar-template-1 {
+  align-items: center;
+  justify-content: center;
+}
+
+.spm_content-holder {
+  margin: 0 15px;
+}
+
+.spm_content-holder a {
+  text-decoration: none;
+}
+
+.spm_content p,
+.spm_content a,
+.spm_content span {
+  line-height: 22px;
+}
+
+.spm_content p + p {
+  margin-top: 4px;
+}
+
+.spm_button-holder {
+  margin-right: 40px;
+}
+
+.spm_button {
+  display: block;
+  padding: 3px 6px;
+  white-space: nowrap;
+  text-decoration: none;
+}
+
+.spm_bar-template-3 {
+  padding: 0;
+  align-items: center;
+}
+
+.spm_bar-template-3-link {
+  display: block;
+  width: 100%;
+}
+
+.spm_bar-template-3 .spm_bar-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+@media only screen and (min-width: 769px) {
+  .spm_bar-template-3 .spm_bar-image-desktop {
+    display: block;
+  }
+
+  .spm_bar-template-3 .spm_bar-image-tablet, .spm_bar-template-3 .spm_bar-image-mobile {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .spm_bar-template-3 .spm_bar-image-tablet {
+    display: block;
+  }
+
+  .spm_bar-template-3 .spm_bar-image-desktop, .spm_bar-template-3 .spm_bar-image-mobile {
+    display: none;
+  }
+
+  .spm_content-holder {
+    margin: 0 10px;
+  }
+}
+
+@media only screen and (max-width: 481px) {
+  .spm_bar-template-3 .spm_bar-image-mobile {
+    display: block;
+  }
+
+  .spm_bar-template-3 .spm_bar-image-desktop, .spm_bar-template-3 .spm_bar-image-tablet {
+    display: none;
+  }
+
+  .spm_content-holder {
+    margin: 0 10px;
+  }
+
+  .spm_content-holder {
+    margin: 0 5px;
+  }
+}
+
+.spm_close-holder {
+  position: absolute;
+  right: 3px;
+  left: auto;
+  width: 30px;
+  height: 30px;
+  border-radius: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+/**
+ * Right to Left Styles
+ */
+.simple-popup-manager-rtl {
+  direction: rtl;
+}
+
+.simple-popup-manager-rtl .spm_close-holder {
+  right: auto;
+  left: 3px;
+}
+
+.simple-popup-manager-rtl .spm_button-holder {
+  margin-right: 0;
+  margin-left: 40px;
+}
+
+.simple-popup-manager-rtl .spm_bar {
+  text-align: right;
+}
