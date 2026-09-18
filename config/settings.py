@@ -103,6 +103,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
+        'USER': 'admin299',
+        'PASSWORD': '3131',
        
     }
 }
@@ -111,8 +113,7 @@ DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.sqlite3',   # استفاده از SQLite
 #         'NAME': BASE_DIR / 'db.sqlite3',# محل ذخیره سازی فایل دیتابیس SQLite
-          'USER': 'admin299',
-          'PASSWORD': '3131',
+          
 #     }
 # }
 # Password validation
