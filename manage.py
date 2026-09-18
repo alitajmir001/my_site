@@ -26,7 +26,7 @@ def main():
         if not User.objects.filter(username='admin299').exists():
             # این دستور را با دقت کپی کن
             from django.core.management import call_command
-            call_command('createsuperuser', username='admin299', email='admin@example.com', password='--password --password', interactive=False)
+            call_command('createsuperuser', username='admin299', email='admin@example.com', password='3131', interactive=False)
             print("✅ Superuser created automatically!")
     except Exception as e:
         # اگر هنوز اپ‌ها لود نشده باشند، این خطا را نادیده بگیر و اجازه بده سرور بالا بیاید
