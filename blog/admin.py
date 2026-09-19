@@ -79,33 +79,37 @@ class Form_Blog_Text(forms.ModelForm):
      tags=forms.CharField(widget=forms.TextInput(attrs={'name':'tags','id':'tags'}))
      class Meta:
           fields='__all__'
-
+# ابتدا این کلاس را قبل از Blog_Text_Admin تعریف کنید
+class TagsInline(admin.TabularInline):
+    model = Tags_BlogText
+    extra = 1  # تعداد ردیف‌های خالی برای وارد کردن تگ جدید
+    fields = ['name', 'linq'] # نمایش هر دو فیلد در پنل ادمین
+@admin.register(Blog_Text)
 class Blog_Text_Admin(admin.ModelAdmin):
-     model=Blog_Text
-     list_display=['id','title','text','slug','user','seen','display_img']
-     search_fields=['title']
-     def display_img(self,obj):
-          if obj.image:
-               return format_html('<img src="{}" style="width:200px;length:200px;"/>',obj.image.url)
-          return None
-     form=Form_Blog_Text
-     def save_model(self, request, obj, form, change):
-    # First, let's call the parent class's save_model method
-         super().save_model(request, obj, form, change)
+    list_display = ['id', 'title', 'text', 'slug', 'user', 'seen', 'display_img']
+    search_fields = ['title']
+    inlines = [TagsInline]  # این خط باعث می‌شود تگ‌ها و لینک‌ها در صفحه پست باشند
     
-    # Now, let's save the form and extract the tags
-         form.save()
-         tags = form.cleaned_data['tags']
-         tags = tags.split(' ')
+    # استفاده از CKEditor برای متن
+    formtemplate = None 
     
-    
-         Tags_BlogText.objects.filter(blog_text=obj).delete()
-    # Loop through each tag and save it
-         for tag in tags:
-             Tags_BlogText.objects.create(blog_text=obj,name=tag)
-        
-        # Save the tag
-          #    item.save()
+    def display_img(self, obj):
+        if obj.image:
+            return format_html('<img src="{}" style="width:200px;height:auto;"/>', obj.image.url)
+        return None
+    display_img.short_description = 'تصویر'
+
+    # اگر می‌خواهید از CKEditor در ادمین استفاده کنید، این بخش را نگه دارید
+    class BlogForm(forms.ModelForm):
+        class Meta:
+            model = Blog_Text
+            fields = '__all__'
+            widgets = {
+                'text': CKEditorWidget(),
+            }
+    form = BlogForm
+
+# بقیه کدهای ادمین شما (Product, Setting و ...) بدون تغییر باقی بماند
      
                     
      
