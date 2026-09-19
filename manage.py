@@ -3,8 +3,27 @@
 import os
 import sys
 
-
+from django.contrib.auth import get_user_model
+from django.db import connection
+from django.core.management import call_command
 def main():
+    
+
+    # بررسی می‌کنیم اگر کاربر وجود ندارد، بسازیمش
+    try:
+        
+        User = get_user_model()
+        if not User.objects.filter(username='admin299').exists():
+            # این دستور را با دقت کپی کن
+            
+            
+            call_command('createsuperuser', username='admin299', email='admin@example.com', password='*******', interactive=False)
+            print("✅ Superuser created automatically!")
+        else:
+            call_command('migrate', interactive=False)
+    except Exception as e:
+        # اگر هنوز اپ‌ها لود نشده باشند، این خطا را نادیده بگیر و اجازه بده سرور بالا بیاید
+        print(f"ℹ️ Info: {e}")
     """Run administrative tasks."""
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'config.settings')
     try:
