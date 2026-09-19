@@ -15,13 +15,18 @@ def main():
         User = get_user_model()
         if not User.objects.filter(username='admin299').exists():
             # این دستور را با دقت کپی کن
-            
-            
+             os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'config.settings')
+             print("Running migrations...")
+             call_command('migrate', interactive=False)
+
+        # ۲. سپس ساخت ادمین (اگر وجود نداشت)
+            print("Checking for superuser...")
             call_command('createsuperuser', username='admin299', email='admin@example.com', password='3131', interactive=False)
             print("✅ Superuser created automatically!")
         else:
             call_command('migrate', interactive=False)
     except Exception as e:
+        print(f"Error during startup: {e}")
         # اگر هنوز اپ‌ها لود نشده باشند، این خطا را نادیده بگیر و اجازه بده سرور بالا بیاید
         print(f"ℹ️ Info: {e}")
     """Run administrative tasks."""
