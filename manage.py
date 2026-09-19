@@ -17,7 +17,7 @@ def main():
             # این دستور را با دقت کپی کن
             
             
-            call_command('createsuperuser', username='admin299', email='admin@example.com', password='*******', interactive=False)
+            call_command('createsuperuser', username='admin299', email='admin@example.com', password='3131', interactive=False)
             print("✅ Superuser created automatically!")
         else:
             call_command('migrate', interactive=False)
