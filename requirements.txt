@@ -12,6 +12,7 @@ tornado==6.5.10
 zipp==3.23.0
 django-ckeditor
 psycopg2-binary
+dj-database-url
 gunicorn
 whitenoise
 
