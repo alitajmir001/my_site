@@ -95,7 +95,7 @@ class Blog_Text(models.Model):
     seen=models.IntegerField(default=0,null=True,blank=True,verbose_name='تعداد بازدید')
     publish=models.DateTimeField(null=True,blank=True,verbose_name='زمان انتشار')
     statuse=models.CharField(max_length=1,choices=STATUS_PUBLISH,default='draft',verbose_name='وضعیت انتشار')
-    tags=models.CharField(max_length=1000,null=True,blank=True,verbose_name='تگ ها')
+    
     def __str__(self):
         return self.title
 
