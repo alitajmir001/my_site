@@ -134,5 +134,4 @@ class Admin_Tags_BlobText(admin.ModelAdmin):
 admin.site.register(Product,ProductAdmin)
 admin.site.register(Setting,SettingAdmin)
 admin.site.register(Attribute,AttributeAdmin)
-admin.site.register(Blog_Text,Blog_Text_Admin)
 admin.site.register(Tags_BlogText,Admin_Tags_BlobText)
