@@ -14,5 +14,6 @@ django-ckeditor
 psycopg2-binary
 dj-database-url
 gunicorn
+cloudinary
 whitenoise
 
