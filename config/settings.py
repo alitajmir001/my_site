@@ -55,7 +55,6 @@ INSTALLED_APPS = [
     'ckeditor',
     'blog.apps.BlogConfig',
     'cloudinary_storage', # حتما قبل از استاتیک یا مدیا قرار گیرد
-    'django.contrib.staticfiles',
     'cloudinary',
     
 ]
