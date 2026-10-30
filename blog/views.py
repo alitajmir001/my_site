@@ -34,26 +34,7 @@ class YourModelDetailView(DetailView):
 
         
         
-import asyncio
-from datetime import datetime
 
-ADMIN_TIMER_ROOM=0
-
-
-async def master_timer_task():
-    global ADMIN_TIMER_ROOM
-    while True:
-        await asyncio.sleep(1)
-        ADMIN_TIMER_ROOM+=1
-        
-       
-
-
-
-# این دستور باعث می‌شود وقتی سرور بالا می‌آید، حلقه تایمر هم شروع شود
-@app.on_event("startup")
-async def startup_event():
-    asyncio.create_task(master_timer_task())
 
 
 
