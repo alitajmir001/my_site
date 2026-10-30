@@ -13,27 +13,26 @@ class BlogConfig(AppConfig):
 # اگر می‌خواهید این مقدار در کل سایت قابل دسترسی باشد، 
 # بهتر است آن را در دیتابیس ذخیره کنید. 
 # اما برای تست، فعلاً در سطح ماژول نگه می‌داریم.
+
+
+# این متغیر خارج از کلاس تعریف می‌شود تا در سطح ماژول باشد
 ADMIN_TIMER_ROOM = 0
 
 def master_timer_task():
-    """این تابع در یک Thread جداگانه اجرا می‌شود و سایت را قفل نمی‌کند"""
+    """این تابع در یک Thread جداگانه اجرا می‌شود"""
     global ADMIN_TIMER_ROOM
     while True:
-        # به جای asyncio.sleep از time.sleep در ترد استفاده می‌کنیم
         time.sleep(1)
         ADMIN_TIMER_ROOM += 1
-        # برای تست در کنسول (در Render این را در لاگ‌ها می‌بینید)
-        # print(f"Timer Tick: {ADMIN_TIMER_ROOM}")
+        # نکته: این مقدار فقط در حافظه این سرور است و با ریست شدن سرور صفر می‌شود.
 
-class YourAppNameConfig(AppConfig): # نام اپلیکیشن خود را جایگزین کنید
+class BlogConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'your_app_name' # نام اپلیکیشن خود را اینجا بنویسید
+    name = 'blog'
+    verbose_name = 'وبلاگ'
 
     def ready(self):
-        """
-        این متد توسط جنگو بلافاصله پس از بالا آمدن اپلیکیشن فراخوانی می‌شود.
-        """
-        # ایجاد یک ترد (Thread) جداگانه برای اجرای تایمر
-        # استفاده از daemon=True باعث می‌شود با بسته شدن سرور، این ترد هم بسته شود
+        """اجرای تایمر فقط یکبار در هنگام استارت آپ"""
+        # استفاده از threading برای جلوگیری از قفل شدن سرور
         timer_thread = threading.Thread(target=master_timer_task, daemon=True)
         timer_thread.start()
