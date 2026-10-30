@@ -56,6 +56,7 @@ INSTALLED_APPS = [
     'blog.apps.BlogConfig',
     'cloudinary_storage', # حتما قبل از استاتیک یا مدیا قرار گیرد
     'cloudinary',
+    'service-translate-pdf.onrender.com.apps.YourAppNameConfig',
     
 ]
 STORAGES = {
